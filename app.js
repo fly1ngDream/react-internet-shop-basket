@@ -2,6 +2,7 @@ const express = require('express');
 // var path = require('path');
 // var cookieParser = require('cookie-parser');
 const mysql = require('mysql');
+const mysqlPassword = require('./mysqlPassword');
 
 let connection;
 function createMysqlConnection(user, password, db) {
@@ -52,7 +53,7 @@ app.get('/numbers', (req, res) => {
 });
 
 app.get('/productsdata', (req, res) => {
-    createMysqlConnection('root', '***REMOVED***', 'ShopProducts');
+    createMysqlConnection('root', mysqlPassword, 'ShopProducts');
     connection.query('SELECT * FROM ShopProducts',
                      (err, rows, fields) => {
                          connection.end();
