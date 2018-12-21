@@ -54,15 +54,17 @@ app.get('/numbers', (req, res) => {
 
 app.get('/productsdata', (req, res) => {
     createMysqlConnection('root', mysqlPassword, 'ShopProducts');
-    connection.query('SELECT * FROM ShopProducts',
-                     (err, rows, fields) => {
-                         connection.end();
-                         if(!err) {
-                             res.json(rows);
-                             return true;
-                         } else {
-                             return false;
-                         }
-                     });
+    connection.query(
+        'SELECT * FROM ShopProducts',
+        (err, rows, fields) => {
+            connection.end();
+            if(!err) {
+                res.json(rows);
+                return true;
+            } else {
+                return false;
+            }
+        }
+    );
 });
 
