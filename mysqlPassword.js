@@ -1,1 +1,1 @@
-export let password = '***REMOVED***';
+let password = module.exports = '***REMOVED***';
